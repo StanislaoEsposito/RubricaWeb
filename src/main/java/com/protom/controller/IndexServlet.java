@@ -38,18 +38,12 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("title", "Login Page");
-//		List<User> users = new ArrayList<>();
-//		users.add(new User().setPassword("pass01").setUsername("user01"));
-//		users.add(new User().setPassword("pass02").setUsername("user02"));
-//		users.add(new User().setPassword("pass03").setUsername("user03"));
-//		users.add(new User().setPassword("pass04").setUsername("user04"));
 		List<Contact> users = ContactDao.findAllNamedQuery();
 		//List<Contact> users = ContactDao.findByName("Stanislao");
 		request.setAttribute("users", users);
-//		for (Contact user : users) {
-//			Set<Email> emails = user.getEmails();
+
 		//bottone per il dettaglio un bottone per l'eliminazione(solo se si è fatto il login)
-//		}
+
 		
 		request.getRequestDispatcher("/home.jsp").forward(request, response);
 	}

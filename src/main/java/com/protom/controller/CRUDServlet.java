@@ -46,20 +46,21 @@ public class CRUDServlet extends HttpServlet {
 		}
 		
 		if(action != null && action.equals("Elimina") ) {
-			System.out.println("ELIMINAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 			String idS = request.getParameter("id");
 			int id = Integer.parseInt(idS); 
 			System.out.println("-----------------------------Elimina");
-			List<Contact> lista = (List<Contact>) request.getSession().getAttribute("listaUtenti");
-			for (int i = 0; i < lista.size(); i++) {
-				if (id==lista.get(i).getId()) {
-					Contact c = lista.get(i);
-					ContactDao.delete(c);
-				}
-				
-			}
+//			List<Contact> lista = ContactDao.findAllNamedQuery();
+//			for (int i = 0; i < lista.size(); i++) {
+//				if (id==lista.get(i).getId()) {
+//					Contact c = lista.get(i);
+//					ContactDao.delete(c);
+//				}
+//				
+//			}
+			Contact c = new Contact();
 			
-			
+			c.setId(id);
+			ContactDao.delete(c);
 		}
 		
 		response.sendRedirect(request.getContextPath() + "/");

@@ -9,6 +9,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 
 import com.protom.model.entities.Contact;
 import com.protom.model.util.DBUtil;
@@ -51,11 +52,13 @@ public class ContactDao {
 		}
 	}
 
+
 	public static void delete(Contact c) {
 		EntityManager em = DBUtil.getEntityManager(DBUtil.RUBRICA_WEB_PU);
 		EntityTransaction trans = em.getTransaction();
 		try {
 			trans.begin();
+			c = em.find(Contact.class, c.getId());  
 			em.remove(c);
 			trans.commit();
 		} catch (Exception e) {

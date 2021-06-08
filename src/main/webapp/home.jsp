@@ -40,8 +40,8 @@
 				//request.getSession().setAttribute("listaUtenti", users);
 				System.out.println("+++++++++++++++++++++++++++++++++++++++++++"+users.get(i));
 				%>
-				 <td><a href="/RubricaWeb2/CRUDServlet?action=Elimina?id=<%=users.get(i).getId() %>">Elimina</a></td>
-				<%-- <td><a href="/RubricaWeb2/CRUDServlet?action=Elimina">Elimina</a></td>		--%>		
+				 <td><a href="/RubricaWeb2/CRUDServlet?action=Elimina&id=<%=users.get(i).getId() %>">Elimina</a></td>
+				 <td><a href="/RubricaWeb2/aggiorna.jsp">Aggiorna</a></td>
 				<%	
 			}
 			%>
