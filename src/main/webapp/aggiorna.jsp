@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" action="/RubricaWeb2/CRUDServlet?action=Aggiorna">
+	<form method="post" action="/RubricaWeb2/CRUDServlet?action=Aggiorna2">
 		<p>
 			Nome: <input type="text" name="name">
 		</p>

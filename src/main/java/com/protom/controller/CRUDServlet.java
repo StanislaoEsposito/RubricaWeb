@@ -33,8 +33,9 @@ public class CRUDServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String page = null;
 		String action = request.getParameter("action");
+		
 		if(action != null && action.equals("Aggiungi") ) {
 			System.out.println("-----------------------------Aggiungi");
 			
@@ -43,28 +44,39 @@ public class CRUDServlet extends HttpServlet {
 					c.setSurname(request.getParameter("surname"));
 
 			ContactDao.insert(c);
+			page= "/";
 		}
 		
 		if(action != null && action.equals("Elimina") ) {
 			String idS = request.getParameter("id");
 			int id = Integer.parseInt(idS); 
 			System.out.println("-----------------------------Elimina");
-//			List<Contact> lista = ContactDao.findAllNamedQuery();
-//			for (int i = 0; i < lista.size(); i++) {
-//				if (id==lista.get(i).getId()) {
-//					Contact c = lista.get(i);
-//					ContactDao.delete(c);
-//				}
-//				
-//			}
 			Contact c = new Contact();
-			
 			c.setId(id);
 			ContactDao.delete(c);
+			page= "/";
 		}
 		
-		response.sendRedirect(request.getContextPath() + "/");
+		if(action != null && action.equals("Aggiorna") ) {
+			System.out.println("-----------------------------Aggiorna");
+			String idS = request.getParameter("id");
+			int id = Integer.parseInt(idS); 
+			Contact c2 = new Contact();
+			c2.setId(id);
+			ContactDao.delete(c2);
+			page = "/aggiorna.jsp";
+			
+				
+		}
+		if (action.equals("Aggiorna2")) {
+			Contact c = new Contact();
+			c.setName(request.getParameter("name"));
+			c.setSurname(request.getParameter("surname"));
+			ContactDao.update(c);
+			page = "/";
+		}
 		
+		response.sendRedirect(request.getContextPath() + page);
 	}
 
 	/**

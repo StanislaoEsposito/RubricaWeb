@@ -41,7 +41,8 @@
 				System.out.println("+++++++++++++++++++++++++++++++++++++++++++"+users.get(i));
 				%>
 				 <td><a href="/RubricaWeb2/CRUDServlet?action=Elimina&id=<%=users.get(i).getId() %>">Elimina</a></td>
-				 <td><a href="/RubricaWeb2/aggiorna.jsp">Aggiorna</a></td>
+				 <td><a href="/RubricaWeb2/CRUDServlet?action=Aggiorna&id=<%=users.get(i).getId() %>">Aggiorna</a></td>
+				 <td><a href="/RubricaWeb2/DettaglioServlet?name=<%=users.get(i).getName() %>&surname=<%=users.get(i).getName() %>&id=<%=users.get(i).getId() %>">Dettaglio</a></td>
 				<%	
 			}
 			%>

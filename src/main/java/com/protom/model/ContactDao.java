@@ -12,6 +12,8 @@ import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 
 import com.protom.model.entities.Contact;
+import com.protom.model.entities.Email;
+import com.protom.model.entities.Phone;
 import com.protom.model.util.DBUtil;
 
 
@@ -98,6 +100,39 @@ public class ContactDao {
 			em.close();
 		}
 		return contacts;
+	}
+	
+
+//  select phone from contacts c inner join phones p on c.id = p.id_contact where id =1; 
+	public static List<Phone> dettaglioPhones(int id) {
+		EntityManager em = DBUtil.getEntityManager(DBUtil.RUBRICA_WEB_PU);
+		String qString = "select p from Contact c join c.phones where c.id = :id";
+		TypedQuery<Phone> q = em.createQuery(qString, Phone.class);
+		q.setParameter("id", id);
+		List<Phone> phone = null;
+		try {
+			phone = q.getResultList();
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		return phone;
+	}
+	
+	public static List<Email> dettaglioEmails(int id) {
+		EntityManager em = DBUtil.getEntityManager(DBUtil.RUBRICA_WEB_PU);
+		String qString = "select email from contacts c inner join emails e on c.id = e.id_contact where id = "+id+";";
+		TypedQuery<Email> q = em.createQuery(qString, Email.class);
+		List<Email> emails = null;
+		try {
+			emails = q.getResultList();
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		return emails;
 	}
 	
 	public static List<Contact> findAllNamedQuery() {

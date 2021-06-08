@@ -15,7 +15,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "contacts")
 @NamedQuery(name = "Contact.findAll", query = "SELECT c FROM Contact c" )
-@NamedQuery(name = "Contact.aggiungi", query = "SELECT c FROM Contact c" )
+
+
 public class Contact {
 	
 	@Id
