@@ -106,7 +106,7 @@ public class ContactDao {
 //  select phone from contacts c inner join phones p on c.id = p.id_contact where id =1; 
 	public static List<Phone> dettaglioPhones(int id) {
 		EntityManager em = DBUtil.getEntityManager(DBUtil.RUBRICA_WEB_PU);
-		String qString = "select p from Contact c join c.phones where c.id = :id";
+		String qString = "select p from Contact c join c.phones p where c.id = :id";
 		TypedQuery<Phone> q = em.createQuery(qString, Phone.class);
 		q.setParameter("id", id);
 		List<Phone> phone = null;
@@ -122,7 +122,7 @@ public class ContactDao {
 	
 	public static List<Email> dettaglioEmails(int id) {
 		EntityManager em = DBUtil.getEntityManager(DBUtil.RUBRICA_WEB_PU);
-		String qString = "select email from contacts c inner join emails e on c.id = e.id_contact where id = "+id+";";
+		String qString = "select e from Contact c join c.emails e where c.id = :id";
 		TypedQuery<Email> q = em.createQuery(qString, Email.class);
 		List<Email> emails = null;
 		try {

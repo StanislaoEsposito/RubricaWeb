@@ -40,6 +40,11 @@ public class DettaglioServlet extends HttpServlet {
 		int id = Integer.parseInt(idS);
 		List<Phone> phonesList = ContactDao.dettaglioPhones(id);
 		request.setAttribute("phonesList", phonesList);
+		List<Email> emailsList = ContactDao.dettaglioEmails(id);
+		request.setAttribute("emailsList", emailsList);
+		
+		request.setAttribute("name", name);
+		request.setAttribute("surname", surname);
 	}
 
 	/**
