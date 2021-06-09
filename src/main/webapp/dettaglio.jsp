@@ -10,21 +10,27 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%=request.getParameter("name") %>aaa
-<%=request.getParameter("surname") %>aaa
-
+<%=request.getParameter("name") %><br>
+<%=request.getParameter("surname") %><br>
+NUMERI:
+<br>
 <%
 List<Phone> phones =(List<Phone>) request.getAttribute("phonesList");
 for(int i = 0; i<phones.size();i++){
 	%>
-	<a><%=phones.get(i) %></a>
+	<a><%=phones.get(i).getPhone()%></a><br>
 	<%
 }
+%>
+<br>
+EMAIL:
+<br>
+<% 
 
 List<Email> emails =(List<Email>) request.getAttribute("emailsList");
 for(int i = 0; i<emails.size();i++){
 	%>
-	<a><%=emails.get(i) %></a>
+	<a><%=emails.get(i).getEmail() %></a><br>
 	<%
 }
 %>

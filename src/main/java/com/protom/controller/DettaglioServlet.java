@@ -45,6 +45,8 @@ public class DettaglioServlet extends HttpServlet {
 		
 		request.setAttribute("name", name);
 		request.setAttribute("surname", surname);
+		
+		request.getRequestDispatcher("dettaglio.jsp").forward(request, response);
 	}
 
 	/**

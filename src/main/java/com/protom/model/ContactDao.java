@@ -124,6 +124,7 @@ public class ContactDao {
 		EntityManager em = DBUtil.getEntityManager(DBUtil.RUBRICA_WEB_PU);
 		String qString = "select e from Contact c join c.emails e where c.id = :id";
 		TypedQuery<Email> q = em.createQuery(qString, Email.class);
+		q.setParameter("id", id);
 		List<Email> emails = null;
 		try {
 			emails = q.getResultList();
